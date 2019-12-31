@@ -1,0 +1,13 @@
+.content {
+  padding: 10px;
+  text-align: center;
+}
+
+.selected {
+   background-color: #513410;
+   font-weight: bold;
+}
+
+.btn {
+   margin-right: 10px;
+}
