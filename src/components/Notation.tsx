@@ -1,19 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { NotationService } from './NotationService';
+import './Notation.css';
 
 type NotationProps = {
   keyId: number
 };
 
 type NotationState = {
+  notationAsSVG: any,
   notes: number[]
 };
 
 export default class Notation extends React.Component<NotationProps, NotationState> {
-  state: NotationState = {
-    // optional second annotation for better type inference
-    notes: []
-  };
+
+  notationService: NotationService
+
+  constructor(props: NotationProps) {
+    super(props);
+    this.state = {
+      notationAsSVG: null,
+      notes: []
+    };
+
+    this.notationService = new NotationService();
+  }
 
   // static getDerivedStateFromProps(nextProps: NotationProps, prevState: NotationState){
   //   if(nextProps.someValue!==prevState.someValue){
@@ -21,12 +32,14 @@ export default class Notation extends React.Component<NotationProps, NotationSta
   //  }
   //  else return null;
   // }
+  componentDidMount() {
+    this.setState({ notationAsSVG: this.notationService.renderNotation() })
+  }
 
   render() {
+    const svg = this.state.notationAsSVG;
     return (
-      <div>
-        <p>Key Played: {this.props.keyId}</p>
-      </div>
+      <div id="notation" dangerouslySetInnerHTML={{ __html: svg }} />
     );
   }
 }
