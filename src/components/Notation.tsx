@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { NotationService } from './NotationService';
+import { PianoNote } from '../core/PianoNote';
 import './Notation.css';
 
 type NotationProps = {
-  keyId: number
+  note?: PianoNote
 };
 
 type NotationState = {
@@ -26,18 +27,11 @@ export default class Notation extends React.Component<NotationProps, NotationSta
     this.notationService = new NotationService();
   }
 
-  // static getDerivedStateFromProps(nextProps: NotationProps, prevState: NotationState){
-  //   if(nextProps.someValue!==prevState.someValue){
-  //     return { someState: nextProps.someValue};
-  //  }
-  //  else return null;
-  // }
-  componentDidMount() {
-    this.setState({ notationAsSVG: this.notationService.renderNotation() })
-  }
-
   render() {
-    const svg = this.state.notationAsSVG;
+    if (this.props.note) {
+      this.notationService.addNote(this.props.note);
+    }
+    const svg = this.notationService.renderNotation()
     return (
       <div id="notation" dangerouslySetInnerHTML={{ __html: svg }} />
     );

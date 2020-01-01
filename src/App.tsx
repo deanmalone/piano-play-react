@@ -7,6 +7,8 @@ import QuizInfo from './components/QuizInfo';
 import Notation from './components/Notation';
 import Keyboard from './components/Keyboard';
 import { SoundService } from './core/SoundService'
+import { PianoNote } from './core/PianoNote';
+import { PianoService } from './core/PianoService'
 
 type AppProps = {
 };
@@ -14,11 +16,13 @@ type AppProps = {
 type AppState = {
   mode: PianoMode;
   keyId: number;
+  note?: PianoNote;
 };
 
 class App extends React.Component<AppProps, AppState> {
 
   soundService: SoundService
+  pianoService: PianoService
 
   constructor(props: AppProps) {
     super(props);
@@ -32,6 +36,7 @@ class App extends React.Component<AppProps, AppState> {
     this.handleKeyPress = this.handleKeyPress.bind(this);
 
     this.soundService = new SoundService();
+    this.pianoService = new PianoService();
   }
 
   handleModeChange(mode: PianoMode) {
@@ -40,6 +45,7 @@ class App extends React.Component<AppProps, AppState> {
 
   handleKeyPress(keyId: number) {
     this.setState({ keyId });
+    this.setState({ note: this.pianoService.getNoteByKeyId(keyId) });
 
     this.soundService.playNote(keyId);
   }
@@ -63,7 +69,7 @@ class App extends React.Component<AppProps, AppState> {
           </div>
         </div>
         <div id="notation-component">
-          <Notation keyId={this.state.keyId} />
+          <Notation note={this.state.note} />
         </div>
         <div id="keyboard-component">
           <Keyboard highlightedKeyId={0} onKeyPress={this.handleKeyPress} />
