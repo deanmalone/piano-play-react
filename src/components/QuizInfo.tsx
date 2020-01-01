@@ -16,8 +16,11 @@ export default class QuizInfo extends React.Component<QuixInfoProps, QuixInfoSta
   render() {
     return (
       <div>
-        <p>QuizInfo</p>
-      </div>
+        <div className="header-secondary">Quiz</div>
+        <div className="content">
+
+        </div >
+      </div >
     );
   }
 }

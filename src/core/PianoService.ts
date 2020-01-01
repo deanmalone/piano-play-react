@@ -86,16 +86,6 @@ export class PianoService {
     }
   }
 
-  // playNote(noteId: string) : void {
-  //   let note = this.getNote(noteId);
-  //   this.pianoNotePlayedSource.next(note);
-  // }
-
-  // playNoteByKeyId(keyId: number) : void {
-  //   let note = this.getNoteByKeyId(keyId);
-  //   this.pianoNotePlayedSource.next(note);
-  // }
-
   getAlternateNote(noteId: string): PianoNote {
 
     if (!this.pianoNoteMap.hasOwnProperty(noteId)) {
