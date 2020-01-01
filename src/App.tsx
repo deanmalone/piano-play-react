@@ -86,7 +86,7 @@ class App extends React.Component<AppProps, AppState> {
         <div id="keyboard-component">
           <Keyboard highlightedKeyId={0} onKeyPress={this.handleKeyPress} />
         </div>
-        <p id="appDetails">Built with <a href="https://reactjs.org/" target="_blank">React</a> (v16.12.0)- Source available on <a href="https://github.com/deanmalone/PianoPlay/" target="_blank">GitHub</a></p>
+        <p id="appDetails">Built with <a href="https://reactjs.org/">React</a> (v16.12.0) - Source available on <a href="https://github.com/deanmalone/piano-play-react/">GitHub</a></p>
       </div>
     );
   }
