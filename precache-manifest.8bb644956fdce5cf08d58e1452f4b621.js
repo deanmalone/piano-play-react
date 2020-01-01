@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d73e699b17a5c174c7bcdee2f211696",
+    "revision": "3f22c8744586c5efc076581cfab23b83",
     "url": "/piano-play-react/index.html"
   },
   {
