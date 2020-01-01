@@ -35,6 +35,7 @@ class App extends React.Component<AppProps, AppState> {
     // This binding is necessary to make `this` work in the callback
     this.handleModeChange = this.handleModeChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleNotePress = this.handleNotePress.bind(this);
 
     this.soundService = new SoundService();
     this.pianoService = new PianoService();
@@ -45,15 +46,20 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   handleKeyPress(keyId: number) {
-    this.setState({ keyId });
-
     const note = this.pianoService.getNoteByKeyId(keyId);
-    //note.seq = this.seq++;
     const alternateNote = this.pianoService.getAlternateNote(note.noteId);
 
-    this.setState({ note: note, alternateNote: alternateNote });
+    this.setState({ keyId, note: note, alternateNote: alternateNote });
 
     this.soundService.playNote(keyId);
+  }
+
+  handleNotePress(note: PianoNote) {
+    const alternateNote = this.pianoService.getAlternateNote(note.noteId);
+
+    this.setState({ keyId: note.keyId, note: note, alternateNote: alternateNote });
+
+    this.soundService.playNote(note.keyId);
   }
 
   render() {
@@ -67,7 +73,7 @@ class App extends React.Component<AppProps, AppState> {
           />
           <div className="panel">
             {this.state.mode === PianoMode.Play &&
-              <NoteInfo note={this.state.note} alternateNote={this.state.alternateNote} />
+              <NoteInfo note={this.state.note} alternateNote={this.state.alternateNote} onNotePress={this.handleNotePress} />
             }
             {this.state.mode === PianoMode.Quiz &&
               <QuizInfo />

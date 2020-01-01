@@ -6,6 +6,7 @@ import './NoteInfo.css';
 type NoteInfoProps = {
   note?: PianoNote
   alternateNote?: PianoNote
+  onNotePress(note: PianoNote): void;
 };
 
 type NoteInfoState = {
@@ -31,7 +32,7 @@ export default class NoteInfo extends React.Component<NoteInfoProps, NoteInfoSta
             </div>
           }
           {this.props.note &&
-            <div className="note-card" >
+            <div className="note-card" onClick={() => this.props.onNotePress(this.props.note!)} >
               <span className="name">{this.props.note.fullname}</span>
               <span className="octave">OCTAVE {this.props.note.octave}</span>
             </div>
@@ -42,7 +43,7 @@ export default class NoteInfo extends React.Component<NoteInfoProps, NoteInfoSta
             </div>
           }
           {this.props.alternateNote &&
-            <div className="note-card">
+            <div className="note-card" onClick={() => this.props.onNotePress(this.props.alternateNote!)}>
               <span className="name">{this.props.alternateNote.fullname}</span>
               <span className="octave">OCTAVE {this.props.alternateNote.octave}</span>
             </div>
