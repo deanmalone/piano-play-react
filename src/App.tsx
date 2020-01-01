@@ -17,6 +17,7 @@ type AppState = {
   mode: PianoMode;
   keyId: number;
   note?: PianoNote;
+  alternateNote?: PianoNote;
 };
 
 class App extends React.Component<AppProps, AppState> {
@@ -45,7 +46,11 @@ class App extends React.Component<AppProps, AppState> {
 
   handleKeyPress(keyId: number) {
     this.setState({ keyId });
-    this.setState({ note: this.pianoService.getNoteByKeyId(keyId) });
+
+    const note = this.pianoService.getNoteByKeyId(keyId);
+    const alternateNote = this.pianoService.getAlternateNote(note.noteId);
+
+    this.setState({ note: note, alternateNote: alternateNote });
 
     this.soundService.playNote(keyId);
   }
@@ -61,7 +66,7 @@ class App extends React.Component<AppProps, AppState> {
           />
           <div className="panel">
             {this.state.mode === PianoMode.Play &&
-              <NoteInfo />
+              <NoteInfo note={this.state.note} alternateNote={this.state.alternateNote} />
             }
             {this.state.mode === PianoMode.Quiz &&
               <QuizInfo />
