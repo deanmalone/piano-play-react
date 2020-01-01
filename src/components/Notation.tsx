@@ -31,6 +31,9 @@ export default class Notation extends React.Component<NotationProps, NotationSta
     if (this.props.note) {
       this.notationService.addNote(this.props.note);
     }
+    else {
+      this.notationService.clear();
+    }
     const svg = this.notationService.renderNotation()
     return (
       <div id="notation" dangerouslySetInnerHTML={{ __html: svg }} />

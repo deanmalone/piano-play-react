@@ -41,13 +41,14 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   handleModeChange(mode: PianoMode) {
-    this.setState({ mode });
+    this.setState({ mode, note: undefined, alternateNote: undefined });
   }
 
   handleKeyPress(keyId: number) {
     this.setState({ keyId });
 
     const note = this.pianoService.getNoteByKeyId(keyId);
+    //note.seq = this.seq++;
     const alternateNote = this.pianoService.getAlternateNote(note.noteId);
 
     this.setState({ note: note, alternateNote: alternateNote });

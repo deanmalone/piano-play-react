@@ -5,13 +5,13 @@ export class PianoNote {
   readonly fullname: string;
   sender?: string; //optional
 
-  constructor (readonly keyId: number, readonly noteId: string) {
+  constructor(readonly keyId: number, readonly noteId: string) {
 
     if (keyId < 16 || keyId > 64) {
       throw new RangeError("Invalid keyId. The valid range of keyId is 16 to 64.");
     }
 
-    if (noteId.length < 2 || noteId.length > 3 ){
+    if (noteId.length < 2 || noteId.length > 3) {
       throw new RangeError("noteId is invalid");
     }
 
@@ -20,13 +20,13 @@ export class PianoNote {
 
     let accidentalSymbol = "";
 
-    if (noteId.length === 3){
+    if (noteId.length === 3) {
       this.accidental = noteId[2];
 
-      if (this.accidental === "s"){
+      if (this.accidental === "s") {
         accidentalSymbol = '\u266F';
       }
-      else if(this.accidental === "f"){
+      else if (this.accidental === "f") {
         accidentalSymbol = '\u266D';
       }
     }
