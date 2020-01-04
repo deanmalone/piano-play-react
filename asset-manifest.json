@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/piano-play-react/static/css/main.b854c55f.chunk.css",
-    "main.js": "/piano-play-react/static/js/main.6f05f49a.chunk.js",
-    "main.js.map": "/piano-play-react/static/js/main.6f05f49a.chunk.js.map",
+    "main.js": "/piano-play-react/static/js/main.ac8a842f.chunk.js",
+    "main.js.map": "/piano-play-react/static/js/main.ac8a842f.chunk.js.map",
     "runtime-main.js": "/piano-play-react/static/js/runtime-main.5d3ff40a.js",
     "runtime-main.js.map": "/piano-play-react/static/js/runtime-main.5d3ff40a.js.map",
-    "static/js/2.e304a109.chunk.js": "/piano-play-react/static/js/2.e304a109.chunk.js",
-    "static/js/2.e304a109.chunk.js.map": "/piano-play-react/static/js/2.e304a109.chunk.js.map",
+    "static/js/2.3fc8c6b6.chunk.js": "/piano-play-react/static/js/2.3fc8c6b6.chunk.js",
+    "static/js/2.3fc8c6b6.chunk.js.map": "/piano-play-react/static/js/2.3fc8c6b6.chunk.js.map",
     "index.html": "/piano-play-react/index.html",
-    "precache-manifest.8bb644956fdce5cf08d58e1452f4b621.js": "/piano-play-react/precache-manifest.8bb644956fdce5cf08d58e1452f4b621.js",
+    "precache-manifest.5d7298cf0b03ccdaacd0fdcc04a1158f.js": "/piano-play-react/precache-manifest.5d7298cf0b03ccdaacd0fdcc04a1158f.js",
     "service-worker.js": "/piano-play-react/service-worker.js",
     "static/css/main.b854c55f.chunk.css.map": "/piano-play-react/static/css/main.b854c55f.chunk.css.map",
-    "static/js/2.e304a109.chunk.js.LICENSE": "/piano-play-react/static/js/2.e304a109.chunk.js.LICENSE"
+    "static/js/2.3fc8c6b6.chunk.js.LICENSE": "/piano-play-react/static/js/2.3fc8c6b6.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.5d3ff40a.js",
-    "static/js/2.e304a109.chunk.js",
+    "static/js/2.3fc8c6b6.chunk.js",
     "static/css/main.b854c55f.chunk.css",
-    "static/js/main.6f05f49a.chunk.js"
+    "static/js/main.ac8a842f.chunk.js"
   ]
 }
