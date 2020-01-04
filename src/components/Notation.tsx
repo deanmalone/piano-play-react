@@ -1,11 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import $ from 'jquery';
 import { NotationService } from './NotationService';
 import { PianoNote } from '../core/PianoNote';
 import './Notation.css';
 
 type NotationProps = {
-  note?: PianoNote
+  notes: PianoNote[]
 };
 
 type NotationState = {
@@ -27,14 +27,25 @@ export default class Notation extends React.Component<NotationProps, NotationSta
     this.notationService = new NotationService();
   }
 
+  componentDidUpdate() {
+    let self=this;
+    $("g.note").off().on('click', function () { self.noteClicked((this as any).id); });
+
+    // Update color of the notes
+    for (let i = 0; i < this.props.notes.length; i++) {
+      if (this.props.notes[i].color) {
+        $("#" + i).attr("fill", this.props.notes[i].color)
+      }
+    }
+
+  }
+
+  noteClicked(id: number) {
+    console.log('noteClicked: ' + id);
+  }
+
   render() {
-    if (this.props.note) {
-      this.notationService.addNote(this.props.note);
-    }
-    else {
-      this.notationService.clear();
-    }
-    const svg = this.notationService.renderNotation()
+    const svg = this.notationService.renderNotation(this.props.notes)
     return (
       <div id="notation" dangerouslySetInnerHTML={{ __html: svg }} />
     );

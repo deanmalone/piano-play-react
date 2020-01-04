@@ -1,10 +1,8 @@
-import React, { MouseEvent } from 'react';
-import ReactDOM from "react-dom";
+import React from 'react';
 import { PianoMode } from '../core/enums';
 import './PlayControl.css';
 
 type PlayControlProps = {
-  // using `interface` is also ok
   message: string;
   mode: PianoMode;
   onModeSelected(mode: PianoMode): void;

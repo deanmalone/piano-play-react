@@ -9,3 +9,9 @@ export enum QuizStatus {
   Finished,
   None
 }
+
+export enum Result {
+  Correct,
+  Incorrect,
+  None
+}

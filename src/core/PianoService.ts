@@ -97,7 +97,7 @@ export class PianoService {
     let notes = this.pianoKeyMap[keyId];
 
     if (notes.length > 1) {
-      if (notes[0] == noteId) {
+      if (notes[0] === noteId) {
         alternateNote = new PianoNote(keyId, notes[1]);
       }
       else {
@@ -116,7 +116,7 @@ export class PianoService {
     let naturalNotes: string[] = [];
 
     Object.keys(this.pianoNoteMap).forEach(note => {
-      if (note.length == 2) {
+      if (note.length === 2) {
         let n = parseInt(note[1]);
         if (n >= lowerOctave && n <= upperOctave) {
           naturalNotes.push(note);

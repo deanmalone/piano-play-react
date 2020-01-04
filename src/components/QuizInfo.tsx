@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import './QuizInfo.css';
 
-import { QuizStatus } from '../core/enums';
+import { QuizStatus, Result } from '../core/enums';
 import { QuizResult } from "../core/QuizResult";
 
 type QuizInfoProps = {
@@ -37,7 +36,7 @@ export default class QuizInfo extends React.Component<QuizInfoProps, QuizInfoSta
 
     let message = "";
     if(this.props.status === QuizStatus.InProgress && this.props.result){
-      message = (this.props.result.isCorrect()) ? "\u2714 Correct, well done!" : "\u2718 Incorrect"
+      message = (this.props.result.result === Result.Correct) ? "\u2714 Correct, well done!" : "\u2718 Incorrect"
     }
 
     return (

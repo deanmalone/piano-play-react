@@ -1,6 +1,6 @@
 import { PianoNote } from './PianoNote';
 import { QuizResult } from './QuizResult';
-import { QuizStatus } from './enums';
+import { QuizStatus, Result } from './enums';
 
 export class QuizService {
 
@@ -33,6 +33,10 @@ export class QuizService {
     }
   }
 
+  getCurrentIndex() {
+    return this.quizIndex;
+  }
+
   getCurrentNoteId() {
     return this.quizNotes[this.quizIndex];
   }
@@ -54,7 +58,7 @@ export class QuizService {
 
     const result = new QuizResult(actualNote, selectedKeyId, this.quizIndex + 1);
 
-    result.isCorrect() ? this.correct++ : this.incorrect++;
+    (result.result === Result.Correct) ? this.correct++ : this.incorrect++;
 
     this.quizResults.push(result);
 

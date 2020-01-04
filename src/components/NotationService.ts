@@ -8,10 +8,7 @@ export class NotationService {
   private vrvToolkit: any;
   private spacingNotesXml: string[] = [];
 
-  notes: PianoNote[]
-
   constructor() {
-    this.notes = [];
     this.vrvToolkit = new verovio.toolkit();
 
     // create hidden notes to ensure the staff is drawn full width. Notes are hidden via css.
@@ -20,27 +17,16 @@ export class NotationService {
     }
   }
 
-  clear(): void {
-    this.notes.length = 0;
-  }
-
-  addNote(note: PianoNote): void {
-    if (this.notes.length == this.maxNotes) {
-      this.notes.length = 0;
-    }
-    this.notes.push(note);
-  }
-
-  renderNotation(): string {
+  renderNotation(notes: PianoNote[]): string {
 
     let trepleNotesXml: string[] = [];
     let bassNotesXml: string[] = [];
 
-    for (let i = 0; i < this.notes.length; i++) {
-      let noteXml = `<note xml:id="${i}" dur="4" oct="${this.notes[i].octave}" pname="${this.notes[i].name}" ${this.notes[i].accidental ? 'accid="' + this.notes[i].accidental + '"' : ''} />`;
-      let restXml = `<rest xml:id="rest-${i}" dur="4" oct="${this.notes[i].octave}" pname="${this.notes[i].name}" ${this.notes[i].accidental ? 'accid="' + this.notes[i].accidental + '"' : ''}/>`;
+    for (let i = 0; i < notes.length; i++) {
+      let noteXml = `<note xml:id="${i}" dur="4" oct="${notes[i].octave}" pname="${notes[i].name}" ${notes[i].accidental ? 'accid="' + notes[i].accidental + '"' : ''} />`;
+      let restXml = `<rest xml:id="rest-${i}" dur="4" oct="${notes[i].octave}" pname="${notes[i].name}" ${notes[i].accidental ? 'accid="' + notes[i].accidental + '"' : ''}/>`;
 
-      if (this.notes[i].octave > 3) {
+      if (notes[i].octave > 3) {
         trepleNotesXml.push(noteXml);
         bassNotesXml.push(restXml);
       }
